@@ -3,6 +3,7 @@
 #include <glog/logging.h>
 #include <string>
 #include <sstream>
+#include <memory>
 
 namespace
 {
@@ -53,6 +54,8 @@ int main(int argc, char *argv[])
 //  CHECK(1==2) << "This is solid math.";
 //  int *p = NULL;
 //  CHECK_NOTNULL(p);
+  std::shared_ptr<std::string> sp = std::make_shared<std::string>("some");
+  CHECK(sp) << "Empty shared pointer";
   // check string
   CHECK_STRNE("UpPer", "UPPER") << fancyLogging();
   CHECK_STRCASEEQ("lower", "LOWER") << fancyLogging();
