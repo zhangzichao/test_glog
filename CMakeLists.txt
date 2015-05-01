@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.8)
+project(test_glog)
+set(USE_GLOG_CATKIN FALSE)
+
+if(USE_GLOG_CATKIN)
+  find_package(glog_catkin REQUIRED)
+  include_directories(${glog_catkin_INCLUDE_DIR})
+  add_executable(test_glog test_glog.cpp)
+  target_link_libraries(test_glog ${glog_catkin_LIBRARIES})
+else()
+  add_executable(test_glog test_glog.cpp)
+  target_link_libraries(test_glog libglog.a)
+endif()
